@@ -1,0 +1,2 @@
+$sql = 'ALTER TABLE `items` ADD `hh` BINARY(1) NOT NULL AFTER `anz`;'; 
+$sql = 'ALTER TABLE `itm_count` ADD `custom_itm` VARCHAR(3) NOT NULL DEFAULT \'x\' AFTER `user`;'; 

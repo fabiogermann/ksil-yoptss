@@ -1,0 +1,394 @@
+bsp::::
+
+-- phpMyAdmin SQL Dump
+-- version 2.11.9.2
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Erstellungszeit: 16. Dezember 2008 um 15:27
+-- Server Version: 5.0.41
+-- PHP-Version: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Datenbank: `yop_tss`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `about`
+--
+
+CREATE TABLE IF NOT EXISTS `about` (
+  `info` varchar(30) collate latin1_general_ci NOT NULL,
+  `content` varchar(50) collate latin1_general_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Daten für Tabelle `about`
+--
+
+INSERT INTO `about` (`info`, `content`) VALUES
+('pagename', 'yop_test'),
+('url', 'http://yop.germann-net.ch'),
+('organisation', 'yop_tss');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `bought`
+--
+
+CREATE TABLE IF NOT EXISTS `bought` (
+  `timestamp` varchar(20) collate latin1_general_ci default NULL,
+  `name` varchar(20) collate latin1_general_ci default NULL,
+  `preis` varchar(20) collate latin1_general_ci default NULL,
+  `menge` varchar(20) collate latin1_general_ci default NULL,
+  `id` varchar(20) collate latin1_general_ci default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Daten für Tabelle `bought`
+--
+
+INSERT INTO `bought` (`timestamp`, `name`, `preis`, `menge`, `id`) VALUES
+('1229437379', 'orangensaft', '12', '1000', NULL),
+('1229437388', 'cranberrysaft', '12', '1000', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `colors`
+--
+
+CREATE TABLE IF NOT EXISTS `colors` (
+  `color` varchar(20) collate latin1_general_ci NOT NULL default '',
+  `code` varchar(20) collate latin1_general_ci NOT NULL default ''
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Daten für Tabelle `colors`
+--
+
+INSERT INTO `colors` (`color`, `code`) VALUES
+('tb_color1', '#00008B'),
+('tb_color2', '#333839'),
+('tb_color3', '#333839'),
+('body_bg', '#000000'),
+('body_col', '#F5F5F5'),
+('a_link', '#006699'),
+('a_hover', '#ffcc33'),
+('h1', '#FF7C2D'),
+('masterhead_bg', '#00008B');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `empl`
+--
+
+CREATE TABLE IF NOT EXISTS `empl` (
+  `id` mediumint(4) NOT NULL auto_increment,
+  `name` varchar(20) collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=3 ;
+
+--
+-- Daten für Tabelle `empl`
+--
+
+INSERT INTO `empl` (`id`, `name`) VALUES
+(1, 'boss'),
+(2, 'junge');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `expn`
+--
+
+CREATE TABLE IF NOT EXISTS `expn` (
+  `id` mediumint(3) NOT NULL auto_increment,
+  `name` varchar(20) collate latin1_general_ci NOT NULL,
+  `preis` varchar(20) collate latin1_general_ci NOT NULL,
+  `zweck` varchar(200) collate latin1_general_ci NOT NULL,
+  `note` text collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=3 ;
+
+--
+-- Daten für Tabelle `expn`
+--
+
+INSERT INTO `expn` (`id`, `name`, `preis`, `zweck`, `note`) VALUES
+(1, 'boss', '100', 'na', 'na'),
+(2, 'junge', '15', 'na', 'na');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `happyhour`
+--
+
+CREATE TABLE IF NOT EXISTS `happyhour` (
+  `name` varchar(30) collate latin1_general_ci NOT NULL,
+  `value` varchar(30) collate latin1_general_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Daten für Tabelle `happyhour`
+--
+
+INSERT INTO `happyhour` (`name`, `value`) VALUES
+('status', '1'),
+('hh_s_hour', '20'),
+('hh_s_minute', '00'),
+('hh_s_seconds', '00'),
+('hh_s_day', '12'),
+('hh_s_month', '4'),
+('hh_s_year', '2008'),
+('hh_e_hour', '21'),
+('hh_e_minute', '00'),
+('hh_e_seconds', '00'),
+('hh_e_day', '12'),
+('hh_e_month', '4'),
+('hh_e_year', '2008');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `ingr`
+--
+
+CREATE TABLE IF NOT EXISTS `ingr` (
+  `id` mediumint(4) NOT NULL auto_increment,
+  `display` varchar(20) collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=3 ;
+
+--
+-- Daten für Tabelle `ingr`
+--
+
+INSERT INTO `ingr` (`id`, `display`) VALUES
+(1, 'orangensaft'),
+(2, 'cranberrysaft');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `items`
+--
+
+CREATE TABLE IF NOT EXISTS `items` (
+  `id` mediumint(3) NOT NULL auto_increment,
+  `display` varchar(20) collate latin1_general_ci NOT NULL,
+  `subcat` varchar(20) collate latin1_general_ci NOT NULL,
+  `thumb` varchar(50) collate latin1_general_ci NOT NULL,
+  `anz` varchar(20) collate latin1_general_ci NOT NULL,
+  `hh` binary(1) NOT NULL,
+  `orangensaft` varchar(20) collate latin1_general_ci NOT NULL,
+  `cranberrysaft` varchar(20) collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
+
+--
+-- Daten für Tabelle `items`
+--
+
+INSERT INTO `items` (`id`, `display`, `subcat`, `thumb`, `anz`, `hh`, `orangensaft`, `cranberrysaft`) VALUES
+(1, 'fruchtmix', '1', 'thumbs/icon.png', '2', '0', '10', '10');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `itm_count`
+--
+
+CREATE TABLE IF NOT EXISTS `itm_count` (
+  `timestamp` varchar(20) collate latin1_general_ci default NULL,
+  `user` varchar(20) collate latin1_general_ci NOT NULL,
+  `fruchtmix` varchar(20) collate latin1_general_ci NOT NULL default 'x'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Daten für Tabelle `itm_count`
+--
+
+INSERT INTO `itm_count` (`timestamp`, `user`, `fruchtmix`) VALUES
+('1229437506', 'admin', '2');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `itm_strc`
+--
+
+CREATE TABLE IF NOT EXISTS `itm_strc` (
+  `id` mediumint(4) NOT NULL auto_increment,
+  `display` varchar(20) collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=8 ;
+
+--
+-- Daten für Tabelle `itm_strc`
+--
+
+INSERT INTO `itm_strc` (`id`, `display`) VALUES
+(1, 'id'),
+(2, 'display'),
+(3, 'subcat'),
+(4, 'thumb'),
+(5, 'anz'),
+(6, 'orangensaft'),
+(7, 'cranberrysaft');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `itm_vp`
+--
+
+CREATE TABLE IF NOT EXISTS `itm_vp` (
+  `timestamp` varchar(20) collate latin1_general_ci default NULL,
+  `id` mediumint(10) NOT NULL auto_increment,
+  `0p` varchar(20) collate latin1_general_ci default NULL,
+  `vp` varchar(20) collate latin1_general_ci default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
+
+--
+-- Daten für Tabelle `itm_vp`
+--
+
+INSERT INTO `itm_vp` (`timestamp`, `id`, `0p`, `vp`) VALUES
+('1229437439', 1, '0', '2.5');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `sets`
+--
+
+CREATE TABLE IF NOT EXISTS `sets` (
+  `set` varchar(20) collate latin1_general_ci NOT NULL default '',
+  `act` binary(1) NOT NULL default '\0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Daten für Tabelle `sets`
+--
+
+INSERT INTO `sets` (`set`, `act`) VALUES
+('debugmode', '0'),
+('border', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `sold`
+--
+
+CREATE TABLE IF NOT EXISTS `sold` (
+  `id` mediumint(10) NOT NULL auto_increment,
+  `timestamp` varchar(30) collate latin1_general_ci NOT NULL,
+  `user` varchar(30) collate latin1_general_ci NOT NULL,
+  `item` varchar(30) collate latin1_general_ci NOT NULL,
+  `pcs` varchar(30) collate latin1_general_ci NOT NULL,
+  `price` varchar(30) collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
+
+--
+-- Daten für Tabelle `sold`
+--
+
+INSERT INTO `sold` (`id`, `timestamp`, `user`, `item`, `pcs`, `price`) VALUES
+(1, '1229437506', 'admin', 'fruchtmix', '2', '2.5');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `stk`
+--
+
+CREATE TABLE IF NOT EXISTS `stk` (
+  `timestamp` varchar(20) collate latin1_general_ci default NULL,
+  `orangensaft` varchar(20) collate latin1_general_ci NOT NULL,
+  `cranberrysaft` varchar(20) collate latin1_general_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Daten für Tabelle `stk`
+--
+
+INSERT INTO `stk` (`timestamp`, `orangensaft`, `cranberrysaft`) VALUES
+('1229437379', '1000', ''),
+('1229437388', '', '1000');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `subcat`
+--
+
+CREATE TABLE IF NOT EXISTS `subcat` (
+  `nr` mediumint(20) NOT NULL auto_increment,
+  `subcat` varchar(20) collate latin1_general_ci default NULL,
+  PRIMARY KEY  (`nr`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
+
+--
+-- Daten für Tabelle `subcat`
+--
+
+INSERT INTO `subcat` (`nr`, `subcat`) VALUES
+(1, 'softdrink');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `used`
+--
+
+CREATE TABLE IF NOT EXISTS `used` (
+  `timestamp` varchar(20) collate latin1_general_ci default NULL,
+  `user` varchar(20) collate latin1_general_ci NOT NULL,
+  `orangensaft` varchar(20) collate latin1_general_ci NOT NULL,
+  `cranberrysaft` varchar(20) collate latin1_general_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Daten für Tabelle `used`
+--
+
+INSERT INTO `used` (`timestamp`, `user`, `orangensaft`, `cranberrysaft`) VALUES
+('1229437506', 'admin', '20', ''),
+('1229437506', 'admin', '', '20');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `UserID` int(11) NOT NULL auto_increment,
+  `UserName` varchar(30) collate latin1_general_ci NOT NULL default '',
+  `UserPass` varchar(32) collate latin1_general_ci NOT NULL default '',
+  `UserSession` varchar(32) collate latin1_general_ci default NULL,
+  `UserMail` varchar(150) collate latin1_general_ci NOT NULL default '',
+  `UserGroup` varchar(30) collate latin1_general_ci NOT NULL default '',
+  PRIMARY KEY  (`UserID`),
+  UNIQUE KEY `NickName` (`UserName`),
+  UNIQUE KEY `UserMail` (`UserMail`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
+
+--
+-- Daten für Tabelle `users`
+--
+
+INSERT INTO `users` (`UserID`, `UserName`, `UserPass`, `UserSession`, `UserMail`, `UserGroup`) VALUES
+(1, 'admin', '78b4a2c6a50923b78d3f494e12078c33', '9dead4ce298694b2ea5f99760e084d42', 'mrhappiness@inter.net', 'admin');

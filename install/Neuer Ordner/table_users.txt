@@ -1,0 +1,54 @@
+CREATE TABLE users ( UserID int(11) PRIMARY KEY auto_increment, UserName varchar(30) NOT NULL default '', UserPass varchar(32) NOT NULL default '', UserSession varchar(32), UserMail varchar(150) NOT NULL default, `UserGroup` VARCHAR( 30 ) NOT NULL '', UNIQUE KEY NickName (UserName), UNIQUE KEY UserMail (UserMail) )
+
+INSERT INTO users SET UserName='admin', UserPass=MD5('tutorial'), UserMail='mrhappiness@inter.net', UserGroup='admin'
+
+CREATE TABLE `about` (`info` VARCHAR( 30 ) NOT NULL ,`content` VARCHAR( 50 ) NOT NULL) ENGINE = MYISAM ;
+
+INSERT INTO `about` (`info` ,`content`)VALUES ('pagename', 'faa');
+
+INSERT INTO `about` (`info` ,`content`)VALUES ('url', 'http://f-a-a.ch');
+
+INSERT INTO `about` (`info` ,`content`)VALUES ('organisation', 'party');
+
+
+
+$sql = 'ALTER TABLE `subcat` ADD PRIMARY KEY(`nr`)';
+$sql = 'ALTER TABLE `itm_vp` ADD PRIMARY KEY(`id`)';
+$sql = 'ALTER TABLE `subcat` CHANGE `nr` `nr` MEDIUMINT(20) NOT NULL AUTO_INCREMENT';
+$sql = 'ALTER TABLE `itm_vp` CHANGE `id` `id` MEDIUMINT(10) NOT NULL AUTO_INCREMENT';
+
+-->itm_vp / itm_count... timestamp rechtschreibfehler
+$sql = 'ALTER TABLE `itm_count` CHANGE `timespamp` `timestamp` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_general_ci NULL DEFAULT NULL';
+
+ $sql = 'CREATE TABLE `sold` ('
+        . ' `id` MEDIUMINT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, '
+        . ' `user` VARCHAR(30) NOT NULL, '
+        . ' `item` VARCHAR(30) NOT NULL, '
+        . ' `pcs` VARCHAR(30) NOT NULL, '
+        . ' `price` VARCHAR(30) NOT NULL'
+        . ' )'
+        . ' ENGINE = myisam;';
+
+$sql = 'ALTER TABLE `sold` ADD `timestamp` VARCHAR(30) NOT NULL AFTER `id`;';
+
+$sql = 'CREATE TABLE `happyhour` ('
+        . ' `name` VARCHAR(30) NOT NULL, '
+        . ' `value` VARCHAR(30) NOT NULL'
+        . ' )'
+        . ' ENGINE = myisam;';
+
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'status\', \'1\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_s_hour\', \'20\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_s_minute\', \'00\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_s_seconds\', \'00\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_s_day\', \'12\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_s_month\', \'4\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_s_year\', \'2008\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_e_hour\', \'21\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_e_minute\', \'00\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_e_seconds\', \'00\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_e_day\', \'12\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_e_month\', \'4\');';
+$sql = 'INSERT INTO `happyhour` (`name`, `value`) VALUES (\'hh_e_year\', \'2008\');';
+
+/***********************************DONE*****************************************************************************************************/
